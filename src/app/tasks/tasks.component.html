@@ -1,0 +1,42 @@
+<button mat-raised-button class="mb-2" (click)="onAddNew()">
+  <mat-icon>add</mat-icon>Add New
+</button>
+
+<div class="extra-feature">
+  <!-- sort and search -->
+  <mat-form-field>
+    <mat-label>Display</mat-label>
+    <mat-select [(ngModel)]="selectedDisplayOption" (ngModelChange)="onDisplayOptionSelected()">
+      <mat-option *ngFor="let display of displayOptions" [value]="display">
+        {{display}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Order By</mat-label>
+    <mat-select [(ngModel)]="selectedOrderOption" (ngModelChange)="onOrderOptionSelected()">
+      <mat-option *ngFor="let order of orderOptions" [value]="order">
+        {{order}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="onSearch()" [(ngModel)]="keyword">
+  </mat-form-field>
+  <!-- paginator -->
+  <mat-paginator
+    [length]="totalTasks"
+    [pageIndex]="currentPage - 1"
+    [pageSize]="tasksPerPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangedPage($event)">
+  </mat-paginator>
+</div>
+
+<div class="flex-container">
+  <app-task-list class="task-list" [tasks]=tasksToDisplay></app-task-list>
+  <div class="task-edit">
+    <router-outlet></router-outlet>
+  </div>
+</div>

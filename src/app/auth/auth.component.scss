@@ -1,0 +1,34 @@
+mat-card {
+  width: 60%;
+  margin: 3rem auto;
+  form {
+    width: 80%;
+    margin: 1rem auto;
+  }
+  mat-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+}
+button[type=submit] {
+  margin-right: 1rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  span {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+mat-spinner {
+  margin: 10vh auto;
+}

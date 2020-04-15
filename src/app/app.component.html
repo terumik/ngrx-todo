@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
+    <!-- todo: remove 'opened' -->
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="'/account'">Account</a>
+      <a mat-list-item [routerLink]="'/tasks'">ToDo</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Close Menu</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header [sidenavRef]="sidenav"></app-header>
+    <div class="outlet-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

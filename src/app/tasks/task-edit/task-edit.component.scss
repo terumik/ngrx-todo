@@ -1,0 +1,19 @@
+form {
+  width: 100%;
+}
+mat-form-field {
+  width: 100%;
+}
+button[type="submit"] {
+  margin-right: 1rem;
+}
+.close-editor {
+  display: flex;
+  justify-content: flex-end;
+}
+.editor-warning {
+  color: #ff4081;
+  font-size: smaller;
+  margin-bottom: 1rem;
+  text-align: center;
+}

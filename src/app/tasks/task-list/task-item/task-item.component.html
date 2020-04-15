@@ -1,0 +1,32 @@
+<mat-expansion-panel [expanded]="isExpanded">
+  <mat-expansion-panel-header [collapsedHeight]="'100px'" [expandedHeight]="'100px'" (click)="onTaskSelected()">
+    <mat-panel-title>
+      <mat-checkbox [checked]="task.isCompleted" (click)="onToggleTaskCompletionStatus()"></mat-checkbox>
+      {{task.taskName}}
+      <!-- todo: change color for over due -->
+      <span class="subtext">Due: {{task.due ? (task.due | date: 'MMM dd, yyyy (E)') : 'Not Set'}}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-list>
+    <mat-list-item *ngFor="let subtask of task.subtasks; let i = index">
+      <mat-checkbox [checked]="subtask.isCompleted" (click)="onToggleSubtaskCompletionStatus(i)"></mat-checkbox>
+      <span class="subtask">{{subtask.subtaskName}}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="task-note" *ngIf="task.note">
+    <h3>Note:</h3>
+      <p class="subtext">
+        {{task.note}}
+      </p>
+  </div>
+
+  <mat-action-row>
+    <p class="subtext">Created by: {{task.assigner.username}} | {{task.creationDate | date }} </p>
+    <button mat-stroked-button color="accent" (click)="onDelete()">
+      <mat-icon>delete_outline</mat-icon> Delete
+    </button>
+  </mat-action-row>
+
+</mat-expansion-panel>

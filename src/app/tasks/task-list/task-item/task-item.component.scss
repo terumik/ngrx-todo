@@ -1,0 +1,42 @@
+mat-expansion-panel {
+  margin-bottom: 1rem;
+}
+mat-checkbox {
+  margin-right: 1rem;
+}
+.subtask {
+  font-size: 0.9rem;
+}
+mat-panel-title,
+span {
+  display: block;
+}
+[mat-stroked-button] {
+  margin-left: 1rem;
+}
+.subtext {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+.task-note{
+  margin-left: 16px;
+  h3 {
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+}
+
+
+.mat-list-item {
+  display: flex;
+  height: auto;
+  margin-bottom: 1.8rem;
+  mat-checkbox, .subtask {
+    align-self: flex-start;
+  }
+}

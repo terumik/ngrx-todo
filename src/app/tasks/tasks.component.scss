@@ -1,0 +1,22 @@
+.mb-2{
+  margin-bottom: 2rem;
+}
+.flex-container {
+  display: flex;
+}
+.task-list{
+  width: 50%;
+}
+.task-edit{
+  width: 50%;
+  padding: 1rem;
+}
+.extra-feature{
+  margin: 2rem auto;
+  mat-form-field {
+    margin-right: 1rem;
+  }
+  .mat-paginator {
+    background: transparent;
+  }
+}

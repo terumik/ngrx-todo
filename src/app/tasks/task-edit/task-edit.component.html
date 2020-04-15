@@ -1,0 +1,43 @@
+<div class="close-editor">
+  <button mat-icon-button type="button" (click)="onCloseEditor()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <p *ngIf="!isAllowedToEdit" class="editor-warning">Only assigner can edit this task.</p>
+  <mat-form-field>
+    <mat-label>{{ isEditMode? "Task Name" : "New Task" }}</mat-label>
+    <input matInput required formControlName="taskName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Due</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="today" formControlName="dueDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div formArrayName="subtasks">
+    <div *ngFor="let subtaskControl of subtasksControls; let i = index" [formGroupName]="i">
+      <input type="checkbox" formControlName="isCompleted" type="hidden">
+      <mat-form-field>
+        <mat-label>Subtask</mat-label>
+        <input matInput formControlName="subtaskName">
+        <button mat-icon-button matSuffix type="button" (click)="onRemoveSubtask(i)" [disabled]="!isAllowedToEdit">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-flat-button type="button" (click)="onAddSubtask()" [disabled]="!isAllowedToEdit">
+    <mat-icon>add</mat-icon>Add Subtask
+  </button>
+
+  <mat-form-field>
+    <mat-label>Note</mat-label>
+    <textarea matInput formControlName="note"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit"
+    [disabled]="!taskForm.valid || !isAllowedToEdit">Submit</button>
+  <button mat-raised-button type="reset" [disabled]="!isAllowedToEdit">Cancel</button>
+</form>

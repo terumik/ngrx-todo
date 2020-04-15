@@ -1,0 +1,39 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-card *ngIf="!isLoading">
+  <mat-card-header>
+    <mat-card-title>{{ isLoginMode ? 'Login' : 'Registration' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput required ngModel name="email">
+      </mat-form-field>
+      <mat-form-field *ngIf="!isLoginMode">
+        <mat-label>Username</mat-label>
+        <input matInput required ngModel name="username">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput required minlength="6" type="password" ngModel name="password">
+      </mat-form-field>
+
+      <mat-card-actions>
+        <div class="mb-1">
+          <button mat-raised-button color="primary" type="submit"
+            [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Register' }}</button>
+          <button mat-raised-button type="reset">Cancel</button>
+        </div>
+        <div class="flex-container">
+          <span (click)="onToggleAuthMode()">
+            {{ isLoginMode ? 'Create a new account' : 'Already have an account?' }}
+          </span>
+          <span>
+            Forgot password
+          </span>
+        </div>
+      </mat-card-actions>
+    </form>
+
+  </mat-card-content>
+</mat-card>

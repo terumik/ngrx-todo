@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <span>Angular Todo</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="sidenavRef.toggle()">Menu</button>
+  <button mat-button [routerLink]="'/auth'" *ngIf="!isLoggedIn">Login</button>
+  <button mat-button [routerLink]="'/auth'" (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>
+
+</mat-toolbar>
